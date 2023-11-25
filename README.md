@@ -1,0 +1,1 @@
+# Ts_Pratica_Solid
