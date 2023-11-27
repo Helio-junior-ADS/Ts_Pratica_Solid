@@ -13,7 +13,7 @@ export class CreateUserUseCase {
     const userAlreadyExits = await this.usersRepository.findByEmail(data.email);
 
     if(userAlreadyExits){
-      throw new Error('User Already Exitis');
+      throw new Error('User Already Exits');
     }
 
     const user = new User(data);

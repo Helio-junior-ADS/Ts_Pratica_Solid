@@ -1,10 +1,11 @@
 import { Router } from "express";
 import {StatusCodes} from 'http-status-codes'
+import { createUserController } from "./userCases/CreateUser";
 
 const router = Router();
 
-router.get('/users', (request, response) =>{
-  return response.status(StatusCodes.ACCEPTED).send("Hello word");
+router.post('/users', (request, response) =>{
+  return createUserController.handle(request, response);
 });
 
 export { router };
