@@ -1,4 +1,5 @@
 import { User } from "../../entities/User";
+import { IMailProvider } from "../../provider/IMailProvider";
 import { MailtrapMailProvider } from "../../provider/implementation/MailtrapMailProvider";
 import { IUserRepository } from "../../repository/IUserRepository";
 import { CreateUserRequestDTO } from "./CreateUserResquestDTO";
@@ -6,7 +7,7 @@ import { CreateUserRequestDTO } from "./CreateUserResquestDTO";
 export class CreateUserUseCase {
   constructor(
     private userRepository: IUserRepository,
-    private mailtrapMailProvider: MailtrapMailProvider
+    private mailProvider: IMailProvider
   ){}
 
   async execute(data:CreateUserRequestDTO):Promise<void>{
@@ -18,7 +19,7 @@ export class CreateUserUseCase {
 
     const user = new User(data);
     this.userRepository.save(user);
-    this.mailtrapMailProvider.sendMail({
+    this.mailProvider.sendMail({
       to:{
         name:'Google',
         email:'google#microsoft.com'
